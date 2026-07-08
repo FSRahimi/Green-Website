@@ -1,11 +1,31 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 const provinceIdSelector = "#provinces path[id]";
+const supportedProvinceIds = new Set([
+  "bamyan",
+  "wardak",
+  "ghazni",
+  "kabul",
+  "daykundi",
+  "ghor",
+  "balkh",
+  "herat",
+  "sar-e-pol",
+]);
+
+const provinceDisplayNames = {
+  "sar-e-pol": "Sarepol",
+  balkh: "Balk",
+};
 
 function normalizeProvinceId(id) {
   return id.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function isSupportedProvince(id) {
+  return supportedProvinceIds.has(normalizeProvinceId(id));
 }
 
 export default function AfghanistanMap({ provinces = [], onProvinceClick }) {
@@ -17,25 +37,44 @@ export default function AfghanistanMap({ provinces = [], onProvinceClick }) {
     return provinces.reduce((lookup, province) => {
       lookup[normalizeProvinceId(province.name)] = province;
       lookup[province.id] = province;
+
+      if (province.svgId) {
+        lookup[normalizeProvinceId(province.svgId)] = province;
+      }
+
       return lookup;
     }, {});
   }, [provinces]);
 
   useEffect(() => {
-    let isMounted = true;
+    let mounted = true;
 
-    fetch("/maps/afghanistan/interactive.svg")
-      .then((response) => response.text())
-      .then((markup) => {
-        if (isMounted) setSvgMarkup(markup);
-      });
+    async function loadMap() {
+      try {
+        const response = await fetch("/maps/afghanistan/interactive.svg");
+
+        if (!response.ok) {
+          throw new Error("Failed to load SVG");
+        }
+
+        const markup = await response.text();
+
+        if (mounted) {
+          setSvgMarkup(markup);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    loadMap();
 
     return () => {
-      isMounted = false;
+      mounted = false;
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!mapRef.current) return;
 
     const svg = mapRef.current.querySelector("svg");
@@ -50,29 +89,47 @@ export default function AfghanistanMap({ provinces = [], onProvinceClick }) {
 
     const provincePaths = svg.querySelectorAll(provinceIdSelector);
     provincePaths.forEach((path) => {
-      path.setAttribute("tabindex", "0");
-      path.setAttribute("role", "button");
+      const isSupported = isSupportedProvince(path.id);
+
       path.setAttribute("aria-label", path.id);
       path.classList.add(
-        "cursor-pointer",
-        "fill-emerald-100",
-        "stroke-emerald-700",
         "outline-none",
         "transition-colors",
-        "duration-150",
-        "hover:fill-emerald-400",
-        "focus:fill-emerald-400"
+        "duration-150"
       );
+
+      if (isSupported) {
+        path.setAttribute("tabindex", "0");
+        path.setAttribute("role", "button");
+        path.classList.add(
+          "cursor-pointer",
+          "fill-emerald-100",
+          "stroke-green-800",
+          "hover:fill-green-800",
+          "focus:fill-green-800"
+        );
+      } else {
+        path.setAttribute("tabindex", "-1");
+        path.removeAttribute("role");
+        path.classList.add(
+          "cursor-default",
+          "fill-gray-300",
+          "stroke-gray-400"
+        );
+      }
     });
-  }, [svgMarkup]);
+  });
 
   function getProvinceFromPath(path) {
     if (!path?.id) return null;
+    if (!isSupportedProvince(path.id)) return null;
+
+    const normalizedId = normalizeProvinceId(path.id);
 
     return (
-      provinceByMapId[normalizeProvinceId(path.id)] || {
-        id: normalizeProvinceId(path.id),
-        name: path.id,
+      provinceByMapId[normalizedId] || {
+        id: normalizedId,
+        name: provinceDisplayNames[normalizedId] || path.id,
         shortDescription: "Province details are coming soon.",
       }
     );
@@ -106,6 +163,14 @@ export default function AfghanistanMap({ provinces = [], onProvinceClick }) {
     event.preventDefault();
     console.log(province.name);
     onProvinceClick?.(province);
+  }
+
+  if (!svgMarkup) {
+    return (
+      <div className="flex h-[500px] items-center justify-center">
+        Loading Afghanistan map...
+      </div>
+    );
   }
 
   return (
