@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Hero from "./components/HeroSection";
+import HeroSection from "./components/HeroSection";
 import SearchBar from "./components/SearchBar";
-import AfghanistanMap from "./components/AfghanistanMap";
+import ProvinceLegend from "./components/ProvinceLegend";
 import ProvincePopup from "./components/ProvincePopup";
+import DonateBanner from "./components/DonateBanner";
 import provinces from "./data/provinces";
 
 export default function ProvincesPage() {
@@ -12,21 +13,21 @@ export default function ProvincesPage() {
 
   return (
     <main>
-
-      <Hero />
-
-      <SearchBar />
-
-      <AfghanistanMap
+      <HeroSection
         provinces={provinces}
         onProvinceClick={setSelectedProvince}
       />
+
+      <SearchBar provinces={provinces} onSelect={setSelectedProvince} />
+
+      <ProvinceLegend />
 
       <ProvincePopup
         province={selectedProvince}
         onClose={() => setSelectedProvince(null)}
       />
 
+      <DonateBanner />
     </main>
   );
 }

@@ -1,1 +1,38 @@
 @import "tailwindcss";
+
+:root {
+  --primary-green: #0f766e;
+  --light-green: #34d399;
+  --page-background: #f5fff8;
+}
+
+body {
+  background: var(--page-background);
+}
+
+.bg-primary-green {
+  background-color: var(--primary-green);
+}
+
+.text-primary-green {
+  color: var(--primary-green);
+}
+
+.bg-light-green {
+  background-color: var(--light-green);
+}
+
+.text-light-green {
+  color: var(--light-green);
+}
+
+.bg-page-background {
+  background-color: var(--page-background);
+}
+
+.glass-panel {
+  background-color: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  backdrop-filter: blur(24px);
+}
