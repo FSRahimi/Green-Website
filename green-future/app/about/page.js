@@ -1,9 +1,10 @@
-
+import AboutUs from "@/app/components/AboutUs";
 export default function AboutPage(){
     return(
         <div>
-            <h1>About Us</h1>
-            
+          <AboutUs/>
+                    
         </div>
+
     );
 }
