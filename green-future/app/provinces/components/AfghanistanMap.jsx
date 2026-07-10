@@ -46,6 +46,7 @@ export default function AfghanistanMap({
         id,
         index,
         province: provinceById[id],
+        color: provinceById[id].color,
         mapX: shape.centroidPercent.x,
         mapY: shape.centroidPercent.y,
         cardX: clampPercent(shape.centroidPercent.x + offset.x),
@@ -99,76 +100,64 @@ export default function AfghanistanMap({
           preserveAspectRatio="none"
           className="absolute inset-0 h-full w-full"
         >
-          {nodes.map((node) => {
-            const isActive = hoveredId === node.id;
-            return (
-              <motion.line
-                key={node.id}
-                x1={node.mapX}
-                y1={node.mapY}
-                x2={node.cardX}
-                y2={node.cardY}
-                stroke={isActive ? "#34d399" : "rgba(255,255,255,0.55)"}
-                strokeWidth={isActive ? 0.5 : 0.3}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 + node.index * 0.08 }}
-              />
-            );
-          })}
-
-          {/* Small dot marking the real spot on the map for each province */}
-          {nodes.map((node) => (
-            <motion.circle
-              key={`dot-${node.id}`}
-              cx={node.mapX}
-              cy={node.mapY}
-              r={hoveredId === node.id ? 1 : 0.6}
-              fill={hoveredId === node.id ? "#34d399" : "#ffffff"}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 + node.index * 0.08 }}
-            />
-          ))}
         </svg>
 
-        {/* Province cards */}
-        {nodes.map((node) => (
-          <motion.button
-            key={node.id}
-            type="button"
-            aria-label={node.province.name}
-            onMouseEnter={() => setHoveredId(node.id)}
-            onMouseLeave={() => setHoveredId(null)}
-            onFocus={() => setHoveredId(node.id)}
-            onBlur={() => setHoveredId(null)}
-            onClick={() => handleActivate(node.province)}
-            onKeyDown={(event) => handleKeyDown(event, node.province)}
-            style={{ left: `${node.cardX}%`, top: `${node.cardY}%` }}
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{
-              opacity: 1,
-              scale: hoveredId === node.id ? 1.08 : 1,
-            }}
-            transition={{
-              opacity: { duration: 0.4, delay: 0.5 + node.index * 0.08 },
-              scale: { type: "spring", stiffness: 300, damping: 18 },
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-xl border border-white/25 bg-emerald-900/70 px-3 py-2 shadow-xl backdrop-blur-md"
-          >
-            <svg
-              viewBox={node.iconViewBox}
-              className="h-6 w-6 flex-shrink-0"
-              fill="rgba(255,255,255,0.85)"
+        {nodes.map((node) => {
+          const isActive = hoveredId === node.id;
+          return (
+            <motion.button
+              key={node.id}
+              type="button"
+              aria-label={node.province.name}
+              onMouseEnter={() => setHoveredId(node.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onFocus={() => setHoveredId(node.id)}
+              onBlur={() => setHoveredId(null)}
+              onClick={() => handleActivate(node.province)}
+              onKeyDown={(event) => handleKeyDown(event, node.province)}
+              style={{
+                left: `${node.cardX}%`,
+                top: `${node.cardY}%`,
+                // subtle per-province tint + colored ring on hover
+                backgroundColor: isActive
+                  ? `${node.color}33`   // ~20% opacity when active
+                  : "rgba(255,255,255,0.10)",
+                borderColor: isActive ? node.color : "rgba(255,255,255,0.25)",
+              }}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{
+                opacity: 1,
+                scale: isActive ? 1.08 : 1,
+              }}
+              transition={{
+                opacity: { duration: 0.4, delay: 0.5 + node.index * 0.08 },
+                scale: { type: "spring", stiffness: 300, damping: 18 },
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-start gap-1 rounded-xl border px-3 py-2 shadow-xl backdrop-blur-md transition-colors"
             >
-              <path d={node.iconPath} />
-            </svg>
-            <span className="whitespace-nowrap text-sm font-semibold text-white">
-              {node.province.name}
-            </span>
-          </motion.button>
-        ))}
+              <div className="flex items-center gap-2">
+                {/* Province silhouette, filled with its own color */}
+                <svg
+                  viewBox={node.iconViewBox}
+                  className="h-6 w-6 flex-shrink-0 drop-shadow"
+                  fill={node.color}
+                >
+                  <path d={node.iconPath} />
+                </svg>
+                <span className="whitespace-nowrap text-sm font-semibold text-white drop-shadow">
+                  {node.province.name}
+                </span>
+              </div>
+              {/* Accent underline that matches the mockup */}
+              <span
+                className="h-0.5 w-full rounded-full"
+                style={{ backgroundColor: node.color, opacity: isActive ? 1 : 0.6 }}
+              />
+            </motion.button>
+          );
+        })}
+
       </div>
     </section>
   );
