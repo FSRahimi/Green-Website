@@ -24,3 +24,30 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.floating {
+  animation: floating 5s ease-in-out infinite;
+}
+body {
+  background: linear-gradient(
+    180deg,
+    #07140d 0%,
+    #10271b 40%,
+    #173423 100%
+  );
+}

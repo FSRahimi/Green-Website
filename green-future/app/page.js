@@ -1,9 +1,13 @@
 import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import Footer from "./components/Footer/Footer";
 
 export default function Home() {
   return (
-   <main className="relative min-h-screen bg-gradient-to-br from-green-700 via-emerald-500 to-teal-400">
+   <main className="relative min-h-screen ">
   <Header />
+  <Hero />
+  <Footer/>
 </main>
   );
 }

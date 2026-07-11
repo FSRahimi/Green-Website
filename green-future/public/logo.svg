@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"></stop>
+      <stop offset="100%" stop-color="#15803D"></stop>
+    </linearGradient>
+
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#166534"></stop>
+      <stop offset="100%" stop-color="#14532D"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle -->
+  <circle cx="256" cy="256" r="228" fill="white" stroke="#DCFCE7" stroke-width="12"></circle>
+
+  <!-- Sun -->
+  <circle cx="256" cy="118" r="36" fill="#FACC15"></circle>
+
+  <!-- Mountains -->
+  <path d="M120 320
+         L200 205
+         L255 285
+         L315 180
+         L392 320Z" fill="url(#mountainGradient)"></path>
+
+  <!-- River -->
+  <path d="M245 280
+         C240 315 252 350 270 390" stroke="#60A5FA" stroke-width="10" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="
+      M256 145
+      C340 165 385 250 256 400
+      C127 250 172 165 256 145Z" fill="url(#leafGradient)" opacity=".95"></path>
+
+  <!-- Leaf Vein -->
+  <path d="M256 175
+      V360" stroke="white" stroke-width="8" stroke-linecap="round"></path>
+
+  <!-- Left Veins -->
+  <path d="M256 235
+         L215 205" stroke="white" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M256 285
+         L205 250" stroke="white" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Right Veins -->
+  <path d="M256 220
+         L300 190" stroke="white" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M256 275
+         L312 240" stroke="white" stroke-width="5" stroke-linecap="round"></path>
+
+</svg>
