@@ -24,29 +24,104 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.glassmorphism{
-position: relative;
-overflow: hidden;
-z-index: 1;
+.glassmorphism {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.glassmorphism::before{
-  content:"" ;
+
+.light-top {
   position: absolute;
-  inset: -50px;
-  background: conic-gradient( transparent, #22c55e, transparent, #22c55e);
-  animation: borderMove 3s linear infinite;
-  z-index: -2;
+  top: 0;
+  left: -120px;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient( to right, transparent, white, transparent);
+  box-shadow: 0 0 15px white;
+  animation: moveTop 1s linear infinite;
+  z-index: 1;
+  pointer-events: none;
 }
-.glassmorphism::after{
-  content: "";
+
+.light-right {
   position: absolute;
-  inset: 2px;
-  background: rgba(10,20,10,0.8);
-  border-radius: inherit;
-  z-index: -1;
+  top: -120px;
+  right: 0;
+  width: 3px;
+  height: 120px;
+  background: linear-gradient( to bottom, transparent, white, transparent);
+  box-shadow: 0 0 15px white;
+  animation: moveRight 1s linear infinite;
+   z-index: 1;
+  pointer-events: none;
 }
-@keyframes borderMove{
-  100%{
-    transform: rotate(360deg);
+
+.light-bottom {
+  position: absolute;
+  bottom: 0;
+  right: -120px;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient( to right, transparent, white, transparent );
+  box-shadow: 0 0 15px white;
+  animation: moveBottom 1s linear infinite;
+   z-index: 1;
+  pointer-events: none;
+}
+
+.light-left {
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  width: 3px;
+  height: 120px;
+  background: linear-gradient( to bottom, transparent, white, transparent);
+  box-shadow: 0 0 15px white;
+  animation: moveLeft 1s linear infinite;
+   z-index: 1;
+  pointer-events: none;
+}
+
+.card-content{
+  position: relative;
+  z-index: 5;
+}
+
+@keyframes moveTop {
+  from {
+    left: -120px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes moveRight {
+  from {
+    top: -120px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes moveBottom {
+  from {
+    right: -120px;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    bottom: -120px;
+  }
+  to {
+    bottom: 100%;
   }
 }

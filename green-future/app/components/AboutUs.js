@@ -1,3 +1,6 @@
+
+import {TreePine, Leaf, Recycle, Users} from "lucide-react" 
+import CountUp from "react-countup";
 export default function AboutUs(){
    const aboutCards = [
      { title: "Our Mission", text: "Protect nature and create sustainable solutions for a greener future."
@@ -7,20 +10,81 @@ export default function AboutUs(){
      {title: "Our Values",text: "Respect for nature, innovation, and responsibility."
      }
     ];
+
+    const goals = [
+     {
+     title: "Tree Plantation",
+     description: "Planting trees to restore nature and improve air quality.",
+     icon: TreePine,
+     },
+     {
+     title: "Clean Environment",
+     description: "Keeping our communities clean through awareness and action.",
+     icon: Leaf,
+     },
+     {
+     title: "Recycling",
+     description: "Encouraging recycling to reduce waste and protect resources.",
+     icon: Recycle,
+     },
+     {
+     title: "Volunteers",
+     description: "Working together with volunteers to make a positive impact.",
+     icon: Users,
+     },
+    ];
+
+    const state = [
+        {number: 100 , title: "VOLUNTEERS"},
+        {number: 300 , title: "PROJECTS"},
+        {number: 400 , title: "AWARDS"},
+        {number: 1000 , title: "MISSION"},
+        {number: 700 , title: "DONATORS"},
+    ];
+
     return(
-        <section className=" relative min-h-[600px] bg-fixed bg-cover bg-center flex items-center"
-        style={{
+     <>
+        
+        <div className=" bg-cover bg-center bg-fixed"
+          style={{
             backgroundImage: "url('/images/nature.JPEG')"
-        }}
-        >
-            <div className="absolute inset-0 bg-black/30"></div>
-              <div className="relative z-10 max-w-6xl mx-auto px-6">  
-                <div className="text-white text-center mb-12">
+          }}>
+        <section >
+          
+            <div className="absolute inset-0 "></div>
+             <div className="relative z-10 max-w-6xl mx-auto px-6">  
+             <div className="text-white text-center mb-12">
                 <h2 className="text-4xl font-bold text-green-400">About Us</h2>
                 <h3 className="text-2xl mt-4 font-semibold text-green-400">Growing A Greener Future</h3>
                 </div>
+                <section className="mt-20">
+    <div className=" text-center px-6 mb-12">
+    <h2 className="text-4xl font-bold text-green-400">Our Goals </h2>
+    <p className="text-white/80 mt-4 max-w-2xl mx-auto">Together we strive to protect nature, promote sustainability,<br></br>and inspire communities to create a greener future. </p>
+  </div>
+ 
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {goals.map((goal) => {
+      const Icon = goal.icon;
+      return (
+        
+        <div
+          key={goal.title}
+          className="glassmorphism rounded-2xl p-8 text-center backdrop-blur-lg bg-white/30 border border-white/20 hover:-translate-y-2 hover:scale-105 transition duration-300"
+        >
+          <div className="w-20 h-20 mx-auto rounded-full bg-green-600 flex items-center justify-center mb-6">
+            <Icon size={40} className="text-white" />
+          </div>
+          <h3 className="text-2xl font-bold text-white mb-4">{goal.title}</h3>
+          <p className="text-white/80"> {goal.description}</p>
+         </div>
+    
+          );
+       })}
+        </div>
+     </section>  
 
-                <div className="grid md:grid-cols-2 gap-8 mt-8 items-center bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20">
+                <div className="grid md:grid-cols-2 gap-8 mt-8 items-center bg-white/10 backdrop-blur-lg p-8 rounded-2xl">
                     <img src="/images/mountain.jpg" className="w-full"/>
         
                     <p className="leading-8 text-white"> Green Future is a project dedicated to protecting
@@ -46,7 +110,20 @@ export default function AboutUs(){
                        ))}
                        </div>
        </div>
-         
+          
         </section>
+           <section className=" grid grid-cols-1 md:grid-cols-5 py-15 text-white gap-8 text-center backdrop-blur-lg ">
+    
+           {state.map((state)=> (
+             <div key= {state.title}>
+                
+                <h5 className="text-5xl font-bold"> {state.number}</h5>
+                <p className="mt-6 text-lg ">{state.title}</p>
+
+             </div>
+           ))}
+        </section>
+        </div>
+        </>
     )
 }
