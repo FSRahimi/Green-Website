@@ -4,10 +4,12 @@ import Footer from "./components/Footer/Footer";
 
 export default function Home() {
   return (
-   <main className="relative min-h-screen ">
-  <Header />
-  <Hero />
-  <Footer/>
-</main>
+    <main className="min-h-screen overflow-x-hidden">
+      <Header />
+
+      <Hero />
+
+      <Footer />
+    </main>
   );
 }
