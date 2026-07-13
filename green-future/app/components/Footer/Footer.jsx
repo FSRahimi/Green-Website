@@ -3,9 +3,7 @@ import Image from "next/image";
 import { Globe, Leaf, Mail, Phone, MapPin } from "lucide-react";
 
 const quickLinks = ["Home", "Coverage", "Projects", "Videos", "Gallery"];
-
 const aboutLinks = ["About", "Education", "Provinces", "Contact"];
-
 const socials = [Globe, Leaf, Mail, Phone];
 
 export default function Footer() {

@@ -20,13 +20,11 @@ export default function Header() {
 
           <div className="hidden sm:block">
             <h1 className="text-lg font-bold text-white">Nature Afghanistan</h1>
-
             <p className="text-xs text-white/70">
               Protect Nature, Protect Life
             </p>
           </div>
         </Link>
-
         <Navigation />
       </div>
     </header>

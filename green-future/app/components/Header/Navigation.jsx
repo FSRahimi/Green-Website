@@ -29,7 +29,7 @@ export default function Navigation() {
             href={link.href}
             className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
               link.name === "Home"
-                ? "bg-green-600 text-white"
+                ? "bg-green-600 text-white shadow-lg shadow-green-900/30"
                 : "text-white hover:bg-white/10 hover:text-green-300"
             }`}
           >
@@ -41,35 +41,36 @@ export default function Navigation() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden rounded-full p-2 text-white hover:bg-white/10 transition"
+        aria-label="Toggle navigation"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 text-white transition-all duration-300 hover:bg-zinc-800 lg:hidden"
       >
-        {isOpen ? <X size={26} /> : <Menu size={26} />}
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Mobile Menu */}
       <div
-        className={`absolute left-4 right-4 top-20 rounded-3xl border border-white/20 bg-black/40 backdrop-blur-2xl p-4 transition-all duration-300 lg:hidden ${
+        className={`absolute left-0 right-0 top-20 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl transition-all duration-300 lg:hidden ${
           isOpen
-            ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 -translate-y-5 invisible"
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-3 opacity-0"
         }`}
       >
-        <div className="flex flex-col gap-2">
+        <nav className="flex flex-col p-3">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={`rounded-xl px-4 py-3 font-medium transition ${
+              className={`rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 ${
                 link.name === "Home"
                   ? "bg-green-600 text-white"
-                  : "text-white hover:bg-white/10"
+                  : "text-zinc-200 hover:bg-zinc-800 hover:text-green-300"
               }`}
             >
               {link.name}
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
     </>
   );
