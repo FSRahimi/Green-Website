@@ -100,6 +100,23 @@ export default function AfghanistanMap({
           preserveAspectRatio="none"
           className="absolute inset-0 h-full w-full"
         >
+          <g className="pointer-events-none">
+            {nodes.map((node) => (
+              <motion.line
+                key={`${node.id}-connector`}
+                x1={`${node.mapX}%`}
+                y1={`${node.mapY}%`}
+                x2={`${node.cardX}%`}
+                y2={`${node.cardY}%`}
+                stroke={node.color}
+                strokeWidth="0.35"
+                strokeLinecap="round"
+                initial={{ opacity: 0, pathLength: 0 }}
+                animate={{ opacity: 0.85, pathLength: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 + node.index * 0.05 }}
+              />
+            ))}
+          </g>
         </svg>
 
         {nodes.map((node) => {

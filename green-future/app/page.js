@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-emerald-950 px-6 text-center">
       <Image
-        src="/images/backgrounds/03back.jfif"
+        src="/images/backgrounds/03`back.jfif"
         alt="Afghanistan landscape"
         fill
         priority
