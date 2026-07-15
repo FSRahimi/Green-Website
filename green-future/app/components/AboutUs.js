@@ -35,11 +35,11 @@ export default function AboutUs(){
     ];
 
     const state = [
-        {number: 100 , title: "VOLUNTEERS"},
-        {number: 300 , title: "PROJECTS"},
-        {number: 400 , title: "AWARDS"},
-        {number: 1000 , title: "MISSION"},
-        {number: 700 , title: "DONATORS"},
+        {number: 100 ,description:"_____" , title: "VOLUNTEERS"},
+        {number: 300 , description:"_____ ", title: "PROJECTS"},
+        {number: 400 , description:"_____" , title: "AWARDS"},
+        {number: 900 , description:"_____" , title: "MISSION"},
+        {number: 700 , description:"_____" , title: "DONATORS"},
     ];
 
     return(
@@ -54,13 +54,13 @@ export default function AboutUs(){
             <div className="absolute inset-0 "></div>
              <div className="relative z-10 max-w-6xl mx-auto px-6">  
              <div className="text-white text-center mb-12">
-                <h2 className="text-4xl font-bold text-green-400">About Us</h2>
+                <h2 className="text-5xl font-bold text-green-400">About Us</h2>
                 <h3 className="text-2xl mt-4 font-semibold text-green-400">Growing A Greener Future</h3>
                 </div>
                 <section className="mt-20">
     <div className=" text-center px-6 mb-12">
     <h2 className="text-4xl font-bold text-green-400">Our Goals </h2>
-    <p className="text-white/80 mt-4 max-w-2xl mx-auto">Together we strive to protect nature, promote sustainability,<br></br>and inspire communities to create a greener future. </p>
+    <p className="text-white/80 mt-4 max-w-2xl mx-auto">🌳Together we strive to protect nature, promote sustainability,🌳<br></br>and inspire communities to create a greener future. </p>
   </div>
  
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -76,7 +76,8 @@ export default function AboutUs(){
             <Icon size={40} className="text-white" />
           </div>
           <h3 className="text-2xl font-bold text-white mb-4">{goal.title}</h3>
-          <p className="text-white/80"> {goal.description}</p>
+          <p className="text-white/80">{goal.description}</p>
+          
          </div>
     
           );
@@ -87,7 +88,7 @@ export default function AboutUs(){
                 <div className="grid md:grid-cols-2 gap-8 mt-8 items-center bg-white/10 backdrop-blur-lg p-8 rounded-2xl">
                     <img src="/images/mountain.jpg" className="w-full"/>
         
-                    <p className="leading-8 text-white"> Green Future is a project dedicated to protecting
+                    <p className="leading-8 text-white">🍃 Green Future is a project dedicated to protecting
                     nature and building a sustainable future. We believe
                     that small actions can create a big impact on our
                     environment. Through awareness, creativity, and
@@ -112,13 +113,15 @@ export default function AboutUs(){
        </div>
           
         </section>
-           <section className=" grid grid-cols-1 md:grid-cols-5 py-15 text-white gap-8 text-center backdrop-blur-lg ">
+           <section className="mt-4 grid grid-cols-1 md:grid-cols-5 py-15 text-white gap-8 text-center backdrop-blur-lg ">
     
            {state.map((state)=> (
              <div key= {state.title}>
                 
                 <h5 className="text-5xl font-bold"> {state.number}</h5>
+                <p className="text-green-500">{state.description}</p>
                 <p className="mt-6 text-lg ">{state.title}</p>
+                
 
              </div>
            ))}

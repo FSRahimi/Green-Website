@@ -24,104 +24,37 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.glassmorphism {
+
+.glow-border{
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
-.light-top {
+}
+.glow-border::before {
+  content: " ";
   position: absolute;
-  top: 0;
-  left: -120px;
-  width: 120px;
-  height: 3px;
-  background: linear-gradient( to right, transparent, white, transparent);
-  box-shadow: 0 0 15px white;
-  animation: moveTop 1s linear infinite;
-  z-index: 1;
-  pointer-events: none;
+  inset: -2px;
+  background:conic-gradiant(from 0deg, transparent, #22c55e, transparent 30%);
+  animation: rotate 4s linear infinite;
 }
 
-.light-right {
+.glow-border::after{
+  content: "";
   position: absolute;
-  top: -120px;
-  right: 0;
-  width: 3px;
-  height: 120px;
-  background: linear-gradient( to bottom, transparent, white, transparent);
-  box-shadow: 0 0 15px white;
-  animation: moveRight 1s linear infinite;
-   z-index: 1;
-  pointer-events: none;
+  inset: 2px;
+  background: #052e16;
+  border-radius: inherit;
 }
 
-.light-bottom {
-  position: absolute;
-  bottom: 0;
-  right: -120px;
-  width: 120px;
-  height: 3px;
-  background: linear-gradient( to right, transparent, white, transparent );
-  box-shadow: 0 0 15px white;
-  animation: moveBottom 1s linear infinite;
-   z-index: 1;
-  pointer-events: none;
-}
-
-.light-left {
-  position: absolute;
-  bottom: -120px;
-  left: 0;
-  width: 3px;
-  height: 120px;
-  background: linear-gradient( to bottom, transparent, white, transparent);
-  box-shadow: 0 0 15px white;
-  animation: moveLeft 1s linear infinite;
-   z-index: 1;
-  pointer-events: none;
-}
-
-.card-content{
+.glow-border> *{
   position: relative;
-  z-index: 5;
+  z-index: 1;
 }
 
-@keyframes moveTop {
-  from {
-    left: -120px;
-  }
-  to {
-    left: 100%;
+@keyframes rotate{
+  100%{
+    transform: rotate(360deg);
   }
 }
 
-@keyframes moveRight {
-  from {
-    top: -120px;
-  }
-  to {
-    top: 100%;
-  }
-}
 
-@keyframes moveBottom {
-  from {
-    right: -120px;
-  }
-  to {
-    right: 100%;
-  }
-}
-
-@keyframes moveLeft {
-  from {
-    bottom: -120px;
-  }
-  to {
-    bottom: 100%;
-  }
-}

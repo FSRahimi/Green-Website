@@ -33,7 +33,7 @@ export default function GalleryPage (){
 
         <div className=" flex gap-8">
             <aside className="w-1/4">
-                <div className="glassmorphism p-6 rounded-2xl border border-green-400shadow-[0_0_10px_#22c55e]">
+                <div className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl">
                   <Camera className="text-green-400 bg-green-500/20 p-2 rounded-full drop-shadow-[0_0_10px_#22c55e]" size={60}/>
                   <h2 className="text-2xl font-bold"><span className="text-white">Capturing the beauty</span><span className="text-green-500"> of Nature</span></h2>
                 <p className="mt-4 text-white/80"> Every nature tells astory of hope,action,and a greener tomorrow.</p>
