@@ -4,15 +4,16 @@ import { Camera} from "lucide-react";
 import { ImageIcon, Video, TreePine, Users} from "lucide-react";
 import GalleryCard from "@/app/components/GalleryCard";
 import {useState} from "react";
+import Link from "next/link";
 const galleryItems= [
-   {id: 1, title: "Image 1", image:"/images/mountain.jpg", description:" A beautifull mountain landscap"},
-   {id: 2, title: "Image 2", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 3, title: "Image 3", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 4, title: "Image 4", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 5, title: "Image 5", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 6, title: "Image 6", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 7, title: "Image 7", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
-   {id: 8, title: "Image 8", image:"/images/mountain.jpg", description:"A beautifull mountain landscap"},
+   {id: 1, title: "بید روسی", image:"/images/gallery/IMG_3287.JPG", description:" A beautifull mountain landscap"},
+   {id: 2, title: "پالی", image:"/images/gallery/IMG_3290.JPG", description:"این گیاه کوهی که نیاز به آب جاری ندارد"},
+   {id: 3, title: "دایکندی", image:"/images/gallery/IMG_3298.JPG", description:" در منطقه گیسو ولایت دایکندی  درخت ناجو مطلقا درخت کوهی نیست اما همیشه تزيینی است در خاک های مناسب و مرطوب بعد از یک الی دو سال مراقبت به آب نیاز ندارد در مناطق گرم و سرد دیده شده است در داخل یک غوزه آن ده ها دانه میباشد که میتوانید از آن قوریه بسازید و تکثیر کنید تا مناطق تان را از حالت خشک و دلگیر کننده نجات دهید"},
+   {id: 4, title: "ایرغی", image:"/images/gallery/IMG_3302.JPG", description:"آشنایی با شاخه و رنگ و شکل ایرغی درختچه کوهی که بدون  آب در کوه ها می رویند مساعد برای مناطق سرد و گیروها مهم برای تنوع جنگلی در کوههت درختچه بومی و محلی بوده مناسب برای دایره سبزاز مزایای آن میتوا به برگ های آن اشاره کرد که برای تغذیه مواشی میباشد و یک درختچه تزیینی مناسب نیز میباشد"},
+   {id: 5, title: "Image 5", image:"/images/gallery/IMG_3321.JPG", description:"A beautifull mountain landscap"},
+   {id: 6, title: "Image 6", image:"/images/gallery/IMG_3311.JPG", description:"A beautifull mountain landscap"},
+   {id: 7, title: "Image 7", image:"/images/gallery/IMG_3296.JPG", description:"A beautifull mountain landscap"},
+   {id: 8, title: "Image 8", image:"/images/gallery/IMG_3279.JPG", description:"A beautifull mountain landscap"},
    
 ];
 
@@ -40,16 +41,16 @@ export default function GalleryPage (){
                 <hr className="mt-6 border-white/20"></hr>
             
                <div className="space-y-4">
-               <div className="flex gap-3">
+               <Link href="/gallery/photos" className="flex gap-3 ">
                 <ImageIcon className="text-green-400 bg-green-500/20 p-2 rounded-full" size={30}/>
                 <p className="text-white">200+ Photos</p>
-               </div>
+               </Link>
 
                <div className="flex gap-3">
-                <a href="" target="_blank" rel=" noopener noreferrer" className="flex gap-3 hover:text-green-400 transition  curser-pointer">
+                <Link href="/gallery/videos" className="flex gap-3 hover:text-green-400 transition  cursor-pointer">
                 <Video className="text-green-400  bg-green-500/20 p-2 rounded-full" size={30}/>
                 <p className="text-white">200+ Videos</p>
-                </a>
+                </Link>
                </div>
 
                <div className="flex gap-3">
@@ -81,9 +82,9 @@ export default function GalleryPage (){
            {selectedItem && (
             
             <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-black/50 p-10 z-50  text-white">
-            <div className="glassmorphism relative z-10 flex flex-col items-center justify-center max-w-2xl p-8 ">
+            <div className="glassmorphism relative z-10 flex flex-col items-center justify-center max-w-2xl p-8 max-h-[90vh] overflow-auto ">
                 
-            <Image src={selectedItem.image} width={600} height={300} alt={selectedItem.title}/>
+            <Image src={selectedItem.image} width={600} height={300} alt={selectedItem.title} className="w-full max-h-[400px] object-contain rounded-lg"/>
             <h1 className="mt-6 itens-center justify-center text-3xl font-bold text-white"> {selectedItem.title} </h1>
             <p className=" items-center justify-center mt-3 text-white">{selectedItem.description}</p>
            <div className="flex items-center mt-4">

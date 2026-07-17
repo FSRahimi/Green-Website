@@ -29,7 +29,6 @@ return(
         <div className=" bg-green-950 grid grid-cols-1 md:grid-cols-3 py-8 gap-8">
         {Videos.map((video)=>(
             <div key={video.title} className=" rounded-2xl text-center bg-white p-8  border border-white/20">
-              
               <p className="text-white">{video.title}</p>
               <p className="mb-4">{video.description}</p>
               <a href="{video.link}" target="_blank" className="text-white bg-green-500 p-2 rounded-xl font-bold">Watch Now</a>  
