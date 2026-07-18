@@ -40,9 +40,6 @@ html {
   }
 }
 
-.floating {
-  animation: floating 5s ease-in-out infinite;
-}
 body {
   background: linear-gradient(
     180deg,
