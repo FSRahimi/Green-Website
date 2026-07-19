@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({ params }) {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 pb-20 pt-28 text-white selection:bg-primary-green selection:text-black">
+    <main className="relative min-h-screen pb-20 pt-28 text-white selection:bg-primary-green selection:text-black">
       <div className="mx-auto max-w-4xl px-4">
         {/* Back Link */}
         <Link

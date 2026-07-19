@@ -12,7 +12,7 @@ export default function Gallery({ province }) {
         <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary-green">
           Gallery
         </p>
-        <h2 className="mt-3 text-4xl font-black">Moments From the Field</h2>
+        <h2 className="mt-3 text-4xl font-black text-white">Moments From the Field</h2>
       </div>
 
       {/*

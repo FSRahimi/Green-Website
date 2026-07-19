@@ -11,14 +11,14 @@ export default function RelatedProvinces({ currentProvince, provinces }) {
       <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary-green">
         Other Provinces
       </p>
-      <h2 className="mt-3 text-4xl font-black">Explore More</h2>
+      <h2 className="mt-3 text-4xl font-black text-white">Explore More</h2>
 
       <div className="mt-8 flex gap-5 overflow-x-auto pb-4">
         {otherProvinces.map((item) => (
           <Link
             key={item.id}
             href={`/provinces/${item.slug}`}
-            className="group min-w-64 overflow-hidden rounded-2xl bg-white shadow-xl"
+            className="group min-w-64 overflow-hidden rounded-2xl bg-slate-900/40 shadow-xl backdrop-blur-xl border border-white/20"
           >
             <div className="relative h-36">
               <Image
@@ -30,8 +30,8 @@ export default function RelatedProvinces({ currentProvince, provinces }) {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-xl font-bold">{item.name}</h3>
-              <p className="mt-1 text-sm text-slate-600">{item.location}</p>
+              <h3 className="text-xl font-bold text-white">{item.name}</h3>
+              <p className="mt-1 text-sm text-white/70">{item.location}</p>
             </div>
           </Link>
         ))}

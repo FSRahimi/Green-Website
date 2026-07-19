@@ -9,14 +9,14 @@ export default function ProvinceStats({ province }) {
     <section className="relative z-20 mx-auto -mt-20 max-w-6xl px-4">
       <div className="mx-auto max-w-6xl rounded-3xl border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
         <div className="grid gap-4 md:grid-cols-4">
-          <div className="rounded-xl bg-white/70 p-5">
+          <div className="rounded-xl bg-white/20 p-5 backdrop-blur-sm">
             <p className="text-sm font-semibold text-primary-green">
               Location
             </p>
             <p className="mt-2 text-xl font-bold">{province.location}</p>
           </div>
 
-          <div className="rounded-xl bg-white/70 p-5">
+          <div className="rounded-xl bg-white/20 p-5 backdrop-blur-sm">
             <p className="text-sm font-semibold text-primary-green">
               Trees Planted
             </p>
@@ -25,7 +25,7 @@ export default function ProvinceStats({ province }) {
             </p>
           </div>
 
-          <div className="rounded-xl bg-white/70 p-5">
+          <div className="rounded-xl bg-white/20 p-5 backdrop-blur-sm">
             <p className="text-sm font-semibold text-primary-green">
               Volunteers
             </p>
@@ -34,7 +34,7 @@ export default function ProvinceStats({ province }) {
             </p>
           </div>
 
-          <div className="rounded-xl bg-white/70 p-5">
+          <div className="rounded-xl bg-white/20 p-5 backdrop-blur-sm">
             <p className="text-sm font-semibold text-primary-green">
               Active Projects
             </p>

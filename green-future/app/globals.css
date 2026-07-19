@@ -6,8 +6,14 @@
   --page-background: #f5fff8;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
-  background: var(--page-background);
+  min-height: 100%;
+  background-color: #051712;
+  color: inherit;
 }
 
 .bg-primary-green {
@@ -36,3 +42,4 @@ body {
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   backdrop-filter: blur(24px);
 }
+/* #c8d8a3 , #dbe7c2 ,#bcd59b,#154734, #013220, #06402B, and #023020 */

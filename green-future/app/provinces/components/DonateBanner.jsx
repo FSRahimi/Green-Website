@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function DonateBanner() {
   return (
     <section className="mx-auto my-16 max-w-6xl px-4">
-      <div className="rounded-3xl border border-white/20 bg-emerald-950 px-8 py-12 text-center text-white shadow-2xl sm:px-16">
+      <div className="rounded-3xl border border-white/20 bg-emerald-950/15 px-8 py-12 text-center text-white shadow-2xl backdrop-blur-xl sm:px-16">
         <p className="text-sm font-bold uppercase tracking-[0.3em] text-light-green">
           Support Our Work
         </p>

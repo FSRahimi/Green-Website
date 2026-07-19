@@ -5,9 +5,9 @@ import AfghanistanMap from "./AfghanistanMap";
 
 export default function HeroSection({ provinces = [], onProvinceClick }) {
   return (
-    <section className="relative overflow-hidden bg-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.24),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.16),_transparent_38%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/30 to-slate-950/90" />
+    <section className="relative overflow-hidden bg-transparent">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.18),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.12),_transparent_38%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
 
       <div className="relative mx-auto flex min-h-[78vh] max-w-7xl flex-col justify-center px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <motion.div

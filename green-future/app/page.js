@@ -1,18 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-emerald-950 px-6 text-center">
-      <Image
-        src="/images/backgrounds/03`back.jfif"
-        alt="Afghanistan landscape"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-40"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-emerald-950/80" />
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 text-center">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/75" />
 
       <div className="relative z-10 max-w-3xl">
         <span className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-6 py-2 text-white backdrop-blur-xl">

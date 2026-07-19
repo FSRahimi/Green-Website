@@ -20,7 +20,7 @@ export default async function ProvincePage({ params }) {
   }
 
   return (
-    <main className="min-h-screen bg-page-background text-slate-950">
+    <main className="relative min-h-screen text-slate-950">
       <ProvinceHero province={province} />
       <ProvinceStats province={province} />
       <ProvinceAbout province={province} />
