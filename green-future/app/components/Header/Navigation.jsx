@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, HeartHandshake } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "/", active: true },
+  { name: "Home", href: "/" },
   { name: "Coverage", href: "#" },
   { name: "Projects", href: "#" },
   { name: "Videos", href: "#" },
@@ -14,21 +15,35 @@ const navLinks = [
   { name: "Gallery", href: "#" },
   { name: "About", href: "#" },
   { name: "Contact", href: "#" },
-  { name: "Donate", href: "#", cta: true },
+  { name: "Donate", href: "/donate", cta: true },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const linkClass = (link, mobile = false) => {
+    const isActive = pathname === link.href;
+    const base = mobile
+      ? "rounded-xl px-4 py-3 text-base font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-200"
+      : "rounded-full px-3 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-200";
+
+    if (link.cta) {
+      return `${base} group relative overflow-hidden bg-gradient-to-r from-emerald-400 to-green-600 text-slate-950 shadow-lg shadow-emerald-950/30 hover:-translate-y-0.5 hover:shadow-emerald-500/25 ${mobile ? "mt-2 flex items-center justify-center gap-2" : "px-4 font-bold"}`;
+    }
+
+    return `${base} ${isActive ? "bg-white/15 text-emerald-200" : "text-white/75 hover:bg-white/10 hover:text-emerald-200"}`;
+  };
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <nav className="hidden lg:flex items-center gap-2">
+      <nav aria-label="Primary navigation" className="hidden 2xl:flex items-center gap-0.5">
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className={link.cta ? "group relative overflow-hidden rounded-full bg-gradient-to-r from-emerald-500 to-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl hover:shadow-green-500/50" : link.active ? "rounded-full bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-green-900/30 transition-all duration-300" : "rounded-full px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-white/10 hover:text-green-300"}
+            aria-current={pathname === link.href ? "page" : undefined}
+            className={linkClass(link)}
           >
             {link.cta ? (
               <>
@@ -45,26 +60,27 @@ export default function Navigation() {
         ))}
       </nav>
 
-      {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle navigation"
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 text-white transition-all duration-300 hover:bg-zinc-800 lg:hidden"
+        aria-label={isOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-navigation"
+        className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-emerald-200 2xl:hidden"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Mobile Menu */}
       <div
-        className={`absolute left-0 right-0 top-20 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl transition-all duration-300 lg:hidden ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"}`}
+        className={`absolute right-0 top-[calc(100%+0.75rem)] w-[min(25rem,calc(100vw-1.5rem))] overflow-hidden rounded-2xl border border-white/15 bg-[#0b1d13]/95 shadow-2xl shadow-black/40 backdrop-blur-2xl transition-all duration-300 2xl:hidden ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"}`}
       >
-        <nav className="flex flex-col gap-1 p-3">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="grid gap-1 p-3 sm:grid-cols-2">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={link.cta ? "mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-4 py-3 font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-[1.02]" : link.active ? "rounded-xl bg-green-600 px-4 py-3 text-base font-medium text-white" : "rounded-xl px-4 py-3 text-base font-medium text-zinc-200 transition-all duration-300 hover:bg-zinc-800 hover:text-green-300"}
+              aria-current={pathname === link.href ? "page" : undefined}
+              className={linkClass(link, true)}
             >
               {link.cta && <HeartHandshake size={18} />}
               {link.name}

@@ -16,7 +16,7 @@ export default function HeroContent() {
   {/* Hedaer */}
       <h1 className="text-5xl font-black leading-[1.05] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
         Protect
-        <span className="mt-2 block bg-gradient-to-r from-green-300 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+        <span className="mt-2 block bg-linear-to-r from-green-300 via-green-400 to-emerald-500 bg-clip-text text-transparent">
           Nature.
         </span>
         <span className="block">Protect Life.</span>
@@ -24,7 +24,7 @@ export default function HeroContent() {
 
       {/* Description */}
       <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg lg:mx-0 lg:text-xl">
-        Together we can protect Afghanistan's forests, wildlife, rivers, and
+        Together we can protect Afghanistan&apos;s forests, wildlife, rivers, and
         mountains while creating a greener future for generations to come.
       </p>
 
