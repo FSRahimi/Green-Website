@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Camera} from "lucide-react";
 import { ImageIcon, Video, TreePine, Users} from "lucide-react";
 import GalleryCard from "@/app/components/GalleryCard";
+
 import {useState} from "react";
 import Link from "next/link";
 const galleryItems= [
@@ -43,7 +44,7 @@ export default function GalleryPage (){
                <div className="space-y-4">
                <Link href="/gallery/photos" className="flex gap-3 ">
                 <ImageIcon className="text-green-400 bg-green-500/20 p-2 rounded-full" size={30}/>
-                <p className="text-white">200+ Photos</p>
+                <p className="text-white">86+ Photos</p>
                </Link>
 
                <div className="flex gap-3">
@@ -73,7 +74,7 @@ export default function GalleryPage (){
             </aside>
         
         
-        <div className="w-3/4 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="w-3/4 grid grid-cols-1 md:grid-cols-4 gap-6 ">
             {galleryItems.map((item)=> (
                 <GalleryCard key={item.id} title={item.title} item={item} image={item.image} onViewDetails={setSelectedItem} description={item.description}/>
            ))}
@@ -82,13 +83,13 @@ export default function GalleryPage (){
            {selectedItem && (
             
             <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-black/50 p-10 z-50  text-white">
-            <div className="glassmorphism relative z-10 flex flex-col items-center justify-center max-w-2xl p-8 max-h-[90vh] overflow-auto ">
+            <div className="glassmorphism relative z-10 flex flex-col items-center justify-center p-8 max-h-[90vh] ">
                 
             <Image src={selectedItem.image} width={600} height={300} alt={selectedItem.title} className="w-full max-h-[400px] object-contain rounded-lg"/>
             <h1 className="mt-6 itens-center justify-center text-3xl font-bold text-white"> {selectedItem.title} </h1>
             <p className=" items-center justify-center mt-3 text-white">{selectedItem.description}</p>
            <div className="flex items-center mt-4">
-            <button onClick= {handleCloseModal} className=" bg-green-900 px-5 mt-0 py-2 rounded font-bold hover:bg-green-500" >Close</button>
+            <button onClick= {handleCloseModal} className="absolute top-4 right-4 backdrop-blur-lg px-5 mt-0 py-2 rounded-full font-bold" >X</button>
             </div>
             </div>
             </div>

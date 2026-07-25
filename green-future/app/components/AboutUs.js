@@ -54,8 +54,10 @@ export default function AboutUs(){
             <div className="absolute inset-0 "></div>
              <div className="relative z-10 max-w-6xl mx-auto px-6">  
              <div className="text-white text-center mb-12">
+              <div className="backdrop-blur-lg bg-white/30 border border-white/20 p-6 rounded-2xl">
                 <h2 className="text-6xl font-bold text-white">About Us</h2>
                 <h3 className="text-3xl mt-4 font-semibold text-white">Growing A Greener Future</h3>
+                </div>
                 </div>
                 <section className="mt-20">
  
@@ -82,7 +84,7 @@ export default function AboutUs(){
      </section>  
 
                 <div className="grid md:grid-cols-2 gap-8 mt-8 items-center bg-white/10 backdrop-blur-lg p-8 rounded-2xl">
-                    <img src="/images/mountain.jpg" className="w-full rounded-lg"/>
+                    <img src="/images/gallery/IMG_3290.JPG" className="w-full rounded-lg "/>
         
                     <p className="leading-8 text-white">🍃 Green Future is a project dedicated to protecting
                     nature and building a sustainable future. We believe
@@ -100,7 +102,7 @@ export default function AboutUs(){
                         className="glassmorphism transition hover:scale-105 hover:-translate-y-2 backdrop-blur-lg border border-white/10 rounded-2xl p-6 text-center text-white"
                         >
                             <div className="relative z-10">
-                            <h4 className="text-2xl font-bold text-green-700">{card.title}</h4>
+                            <h4 className="text-2xl font-bold text-white">{card.title}</h4>
                             <p className="mt-4">{card.text}</p>
                             </div>
                             </div>
@@ -113,8 +115,7 @@ export default function AboutUs(){
     
            {state.map((state)=> (
              <div key= {state.title}>
-                
-                <h5 className="text-5xl font-bold"> {state.number}</h5>
+                <h5 className="text-5xl font-bold">{state.number}+</h5>
                 <p className="text-green-500">{state.description}</p>
                 <p className="mt-6 text-lg ">{state.title}</p>
                 

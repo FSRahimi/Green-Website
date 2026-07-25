@@ -1,12 +1,11 @@
 
-
 const Videos =[
-    {video:" ", title:"video 1", description:"protect our plan", link:""},
-    {video:" ", title:"video 2", description:"protect our plan", link:""},
-    {video:" ", title:"video 3", description:"protect our plan", link:""},
-    {video:" ", title:"video 4", description:"protect our plan", link:""},
-    {video:" ", title:"video 5", description:"protect our plan", link:""},
-    {video:" ", title:"video 6", description:"protect our plan", link:""},
+    {title:"video 1", link:"https://youtu.be/ImTzHImU4Js"},
+    {title:"video 2", link:"https://youtu.be/vS8jwW9dKhI"},
+    {title:"video 3", link:"https://youtu.be/vIFf-N35m60"},
+    {title:"video 4", link:"https://youtu.be/_TqjjPs34Iw"},
+    {title:"video 5", link:"https://youtu.be/URK8aXwmNck"},
+    {title:"video 6", link:"https://youtu.be/wHsy1CBJJRI"},
 
 ];
 
@@ -29,9 +28,8 @@ return(
         <div className=" bg-green-950 grid grid-cols-1 md:grid-cols-3 py-8 gap-8">
         {Videos.map((video)=>(
             <div key={video.title} className=" rounded-2xl text-center bg-white p-8  border border-white/20">
-              <p className="text-white">{video.title}</p>
-              <p className="mb-4">{video.description}</p>
-              <a href="{video.link}" target="_blank" className="text-white bg-green-500 p-2 rounded-xl font-bold">Watch Now</a>  
+              <p className="text-g<ray-700 font-bold mb-6">{video.title}</p>
+              <a href={video.link} target="_blank" rel="noopener noreferrer" className="text-white bg-green-500 p-2 rounded-xl font-bold">Watch On Youtube</a>  
             </div>
         ))}
         </div>
