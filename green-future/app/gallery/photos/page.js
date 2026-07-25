@@ -98,8 +98,8 @@ export default function PhotosPage() {
   return (
     <main className="min-h-screen bg-green-950 p-8">
       <div className="mx-auto max-w-7xl">
-        <Link href="/gallery" className="text-green-300 hover:text-green-100">
-          ← Back to gallery
+        <Link href="/gallery" className=" text-green-300 hover:text-green-100">
+         Go back
         </Link>
         <h1 className="my-8 text-4xl font-bold text-white">Nature's Lens</h1>
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">

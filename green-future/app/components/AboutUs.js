@@ -54,9 +54,9 @@ export default function AboutUs(){
             <div className="absolute inset-0 "></div>
              <div className="relative z-10 max-w-6xl mx-auto px-6">  
              <div className="text-white text-center mb-12">
-              <div className="backdrop-blur-lg bg-white/30 border border-white/20 p-6 rounded-2xl">
+              <div className="backdrop-blur-lg bg-white/20 border border-white/20 p-6 rounded-2xl">
                 <h2 className="text-6xl font-bold text-white">About Us</h2>
-                <h3 className="text-3xl mt-4 font-semibold text-white">Growing A Greener Future</h3>
+                <h3 className="text-2xl mt-4 font-semibold text-white">Growing A Greener Future</h3>
                 </div>
                 </div>
                 <section className="mt-20">
@@ -68,7 +68,7 @@ export default function AboutUs(){
         
         <div
           key={goal.title}
-          className="glassmorphism rounded-2xl p-8 text-center backdrop-blur-lg bg-white/30 border border-white/20 hover:-translate-y-2 hover:scale-105 transition duration-300"
+          className="glassmorphism rounded-2xl p-8 text-center backdrop-blur-lg bg-white/20 border border-white/20 hover:-translate-y-2 hover:scale-105 transition duration-300"
         >
           <div className="w-20 h-20 mx-auto rounded-full bg-green-600 flex items-center justify-center mb-6">
             <Icon size={40} className="text-white" />
