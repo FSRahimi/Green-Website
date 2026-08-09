@@ -15,7 +15,7 @@ export default function Videos({ province }) {
             className="group relative overflow-hidden rounded-2xl border border-white/20 bg-slate-900/10 p-3 shadow-xl backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-white/40 hover:bg-slate-900/20 hover:shadow-2xl"
           >
             {/* Ambient background glow effect on hover */}
-            <div className="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-primary-green/0 via-primary-green/10 to-emerald-500/0 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
+            <div className="absolute -inset-1 -z-10 rounded-2xl bg-linear-to-r from-primary-green/0 via-primary-green/10 to-emerald-500/0 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
 
             {/* Video Player Frame */}
             <div className="overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-inner">

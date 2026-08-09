@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Donation({ province }) {
   return (
     <section id="donate" className="pb-20">
-      <div className="relative min-h-[380px] overflow-hidden">
+      <div className="relative min-h-95 overflow-hidden">
         <Image
           src={province.heroImage || province.image}
           alt={`${province.name} donation background`}
@@ -13,7 +13,7 @@ export default function Donation({ province }) {
         />
         <div className="absolute inset-0 bg-emerald-950/65 backdrop-blur-sm" />
 
-        <div className="relative z-10 mx-auto flex min-h-[380px] max-w-6xl items-center px-4">
+        <div className="relative z-10 mx-auto flex min-h-95 max-w-6xl items-center px-4">
           <div className="w-full rounded-3xl border border-white/20 bg-white/10 p-8 text-white shadow-2xl backdrop-blur-xl sm:p-12">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-green-100">

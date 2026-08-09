@@ -12,7 +12,7 @@ export default function ProvinceHero({ province }) {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/70" />
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="mx-auto max-w-5xl px-4 text-center text-white">
